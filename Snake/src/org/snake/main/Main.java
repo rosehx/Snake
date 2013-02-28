@@ -8,6 +8,7 @@ import org.lwjgl.opengl.DisplayMode;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import org.snake.colision.CollisionApple;
 import org.snake.objects.World;
 import org.snake.objects.Block;
 import org.snake.objects.Apple;
@@ -16,8 +17,10 @@ import org.snake.objects.Apple;
 public class Main {
 	
 	private final String TITLE = "Snake";
-	private final int WIDTH = 600, HEIGHT = 650, FPS = 60;
-	public World world = new World(15);
+	public static final float WIDTH = 600;
+	public static final float HEIGHT = 650;
+	private int FPS = 60;
+	public CollisionApple content = new CollisionApple(6);
 	
 	
 	public Main() {
@@ -42,11 +45,11 @@ public class Main {
 	
 	private void gameInit(){
 		initGL();
-		world.initWorld();
+		content.initNoCollide();
 		
 	}
 	public void gameLoop(){
-		world.drawWorld();
+		content.drawNoCollide();
 	}
 
 	private void initGL() {
@@ -55,7 +58,7 @@ public class Main {
 		 */
 		try {
 			Display.setInitialBackground(0.0f, 0.0f, 0.0f);
-			Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
+			Display.setDisplayMode(new DisplayMode((int)WIDTH, (int)HEIGHT));
 			Display.setResizable(false);
 			Display.setTitle(TITLE);
 			Display.create();

@@ -2,14 +2,12 @@ package org.snake.objects;
 
 import static org.lwjgl.opengl.GL11.*;
 
-import org.lwjgl.opengl.Display;
-
-import org.snake.objects.World;
+import org.snake.main.Main;
 
 public class Apple {
 	
 	private float x, y, rad;
-	public final float  WIDTH = 600, HEIGHT = 650;
+	private float  WIDTH = Main.WIDTH, HEIGHT = Main.HEIGHT;
 	
 	public Apple(float x, float y, float rad){
 		this.x = x;
@@ -44,10 +42,10 @@ public class Apple {
 		this.rad = rad;
 	}	//get
 	public float getX(){
-		return x * (getRad() /2);
+		return x * (-getRad());
 	}
 	public float getY(){
-		return y * (getRad() /2);
+		return y * (-getRad());
 	}
 	public float getRad(){
 		return rad;
